@@ -114,14 +114,14 @@ function optionsframework_options() {
 	
 	$options[] = array(
 		'name' => __('站点名称', 'options_framework_theme'),
-		'desc' => __('樱花庄的白猫', 'options_framework_theme'),
+		'desc' => __('iVampireSPの物语', 'options_framework_theme'),
 		'id' => 'site_name',
 		'std' => '',
 		'type' => 'text');	
 
 	$options[] = array(
 		'name' => __('作者', 'options_framework_theme'),
-		'desc' => __('Mashiro', 'options_framework_theme'),
+		'desc' => __('iVampireSP', 'options_framework_theme'),
 		'id' => 'author_name',
 		'std' => '',
 		'type' => 'text');	
@@ -129,7 +129,7 @@ function optionsframework_options() {
 	$options[] = array(
         'name' => __("主题风格", 'akina'),
         'id' => 'theme_skin',
-        'std' => "#FE9600",
+        'std' => "#FB7299",
         'desc' => __('自定义主题颜色', ''),
         'type' => "color"
 	);
@@ -229,7 +229,7 @@ function optionsframework_options() {
 		'name' => __('默认文章特色图', 'options_framework_theme'),
 		'desc' => __('在未设置文章特色图的情况下展示的默认图像，留空则调用本地随机封面（要展示的图片放入 /wp-content/themes/Sakura/feature/gallery/ 目录）', 'options_framework_theme'),
 		'id' => 'default_feature_image',
-		'std' => 'https://api.mashiro.top/feature/',
+		'std' => 'https://api.ivampiresp.com/tp/api.php',
 		'type' => 'text');
 		
 	$options[] = array(
@@ -875,26 +875,6 @@ function optionsframework_options() {
 		'std' => '0',
 		'type' => 'checkbox');
 
-	$options[] = array(
-		'name' => __('开启多说插件支持', 'options_framework_theme'),
-		'desc' => __('多说已经凉了', 'options_framework_theme'),
-		'id' => 'general_disqus_plugin_support',
-		'std' => '0',
-		'type' => 'checkbox');
-
-	$options[] = array(
-		'name' => __('后台登陆界面背景图', 'options_framework_theme'),
-		'desc' => __('该地址为空则使用默认图片', 'options_framework_theme'),
-		'id' => 'login_bg',
-		'type' => 'upload');
-        
-    $options[] = array(
- 		'name' => __('后台登陆界面logo', 'options_framework_theme'),
- 		'desc' => __('用于登录界面显示', 'options_framework_theme'),
- 		'id' => 'logo_img',
- 		'std' => $imagepath.'mashiro-logo-s.png',
- 		'type' => 'upload');
-        
     $options[] = array(
 		'name' => __('时区调整', 'options_framework_theme'),
 		'desc' => __('如果评论出现时差问题在这里调整，填入一个整数，计算方法：实际时间=显示错误的时间-你输入的整数（单位：小时）', 'options_framework_theme'),

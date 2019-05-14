@@ -715,16 +715,6 @@ function bolo_QTnextpage_arg1() {
  * 后台登录页
  * @M.J
  */	
-//Login Page style
-function custom_login() {
-	//echo '<link rel="stylesheet" type="text/css" href="' . get_bloginfo('template_directory') . '/inc/login.css" />'."\n";
-	echo '<link rel="stylesheet" type="text/css" href="'.get_site_url().'/wp-content/themes/Sakura/inc/login.css" />'."\n";
-	//echo '<script type="text/javascript" src="'.get_bloginfo('template_directory').'/js/jquery.min.js"></script>'."\n";
-	echo '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@1.8.2/jquery.min.js"></script>'."\n";
-}
-
-add_action('login_head', 'custom_login');
-
 //Login Page Title
 function custom_headertitle ( $title ) {
 	return get_bloginfo('name');
@@ -736,92 +726,6 @@ function custom_loginlogo_url($url) {
 	return esc_url( home_url('/') );
 }
 add_filter( 'login_headerurl', 'custom_loginlogo_url' );
-
-//Login Page Footer
-function custom_html() {
-	if ( akina_option('login_bg') ) {
-		$loginbg = akina_option('login_bg'); 
-	}else{
-		$loginbg = get_bloginfo('template_directory').'/images/hd.png';
-	}
-	echo '<script type="text/javascript" src="'.get_site_url().'/wp-content/themes/Sakura/js/login.js"></script>'."\n";
-	echo '<script type="text/javascript">'."\n";
-	echo 'jQuery("body").prepend("<div class=\"loading\"><img src=\"https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/login_loading.gif\" width=\"58\" height=\"10\"></div><div id=\"bg\"><img /></div>");'."\n";
-	echo 'jQuery(\'#bg\').children(\'img\').attr(\'src\', \''.$loginbg.'\').load(function(){'."\n";
-	echo '	resizeImage(\'bg\');'."\n";
-	echo '	jQuery(window).bind("resize", function() { resizeImage(\'bg\'); });'."\n";
-	echo '	jQuery(\'.loading\').fadeOut();'."\n";
-	echo '});';
-	echo '</script>'."\n";
-	echo '<script>
-	function verificationOK(){
-		var x, y, z = "verification";
-		var x=$(\'#loginform\').find(\'input[name="verification"]\').val();
-		//var x=document.forms["loginform"]["verification"].value; //原生js实现
-		var y=$(\'#registerform\').find(\'input[name="verification"]\').val();
-		var z=$(\'#lostpasswordform\').find(\'input[name="verification"]\').val();
-		if (x=="verification" || y=="verification" || z=="verification"){
-		  alert("Please slide the block to verificate!");
-		  return false;
-	  }
-	}
-	$(document).ready(function(){
-		$( \'<p><div id="verification-slider"><div id="slider"><div id="slider_bg"></div><span id="label">»</span><span id="labelTip">Slide to Verificate</span></div><input type="hidden" name="verification" value="verification" /></div><p>\' ).insertBefore( $( ".submit" ) );
-		$(\'form\').attr(\'onsubmit\',\'return verificationOK();\');
-        $(\'h1 a\').attr(\'style\',\'background-image: url('.akina_option('logo_img').'); \');
-		$(".forgetmenot").replaceWith(\'<p class="forgetmenot">Remember Me<input name="rememberme" id="rememberme" value="forever" type="checkbox"><label for="rememberme" style="float: right;margin-top: 5px;transform: scale(2);margin-right: -10px;"></label></p>\');
-	});
-	</script>';
-	echo '<script type="text/javascript">
-		var startTime = 0;
-		var endTime = 0;
-		var numTime = 0;
-		$(function () {
-			var slider = new SliderUnlock("#slider",{
-			successLabelTip : "OK"
-		},function(){
-			var sli_width = $("#slider_bg").width();
-			$(\'#verification-slider\').html(\'\').append(\'<input id="verification-ok" class="input" type="text" size="25" value="OK!" name="verification" disabled="true" />\');
-			
-			endTime = nowTime();
-			numTime = endTime-startTime;
-			endTime = 0;
-			startTime = 0;
-			// 获取到滑动使用的时间 滑动的宽度
-			// alert( numTime );
-			// alert( sli_width );
-		});
-			slider.init();
-		})
-
-		/**
-		* 获取时间精确到毫秒
-		* @type
-		*/
-		function nowTime(){
-			var myDate = new Date();
-			var H = myDate.getHours();//获取小时
-			var M = myDate.getMinutes(); //获取分钟
-			var S = myDate.getSeconds();//获取秒
-			var MS = myDate.getMilliseconds();//获取毫秒
-			var milliSeconds = H * 3600 * 1000 + M * 60 * 1000 + S * 1000 + MS;
-			return milliSeconds;
-		}
-	</script>
-	<script type="text/javascript" src="'.get_template_directory_uri().'/user/verification.js"></script>';
-}
-add_action('login_footer', 'custom_html');
-
-//Login message
-//* Add custom message to WordPress login page
-function smallenvelop_login_message( $message ) {
-    if ( empty($message) ){
-        return '<p class="message"><strong>You may try 3 times for every 5 minutes!</strong></p>';
-    } else {
-        return $message;
-    }
-}
-//add_filter( 'login_message', 'smallenvelop_login_message' );
 
 //Fix password reset bug </>
 function resetpassword_message_fix( $message ) {
@@ -1536,5 +1440,35 @@ function DEFAULT_FEATURE_IMAGE() {
         return akina_option('default_feature_image').'?'.rand(1,1000);
     }
 }
-
+require_once(get_template_directory().'/inc/logincfg.php');
 //code end 
+function reply_to_read($atts, $content=null) {   
+        extract(shortcode_atts(array("notice" => '<p class="reply-to-read">温馨提示: 此处内容需要<a href="#respond" title="评论本文">评论本文</a>后才能查看.</p>'), $atts));   
+        $email = null;   
+        $user_ID = (int) wp_get_current_user()->ID;   
+        if ($user_ID > 0) {   
+            $email = get_userdata($user_ID)->user_email;   
+            //对博主直接显示内容   
+            $admin_email = "ivampiresp@foxmail.com"; //博主Email   
+            if ($email == $admin_email) {   
+                return $content;   
+            }   
+        } else if (isset($_COOKIE['comment_author_email_' . COOKIEHASH])) {   
+            $email = str_replace('%40', '@', $_COOKIE['comment_author_email_' . COOKIEHASH]);   
+        } else {   
+            return $notice;   
+        }   
+        if (empty($email)) {   
+            return $notice;   
+        }   
+        global $wpdb;   
+        $post_id = get_the_ID();   
+        $query = "SELECT `comment_ID` FROM {$wpdb->comments} WHERE `comment_post_ID`={$post_id} and `comment_approved`='1' and `comment_author_email`='{$email}' LIMIT 1";   
+        if ($wpdb->get_results($query)) {   
+            return do_shortcode($content);   
+        } else {   
+            return $notice;   
+        }   
+    }   
+ 
+    add_shortcode('reply', 'reply_to_read');

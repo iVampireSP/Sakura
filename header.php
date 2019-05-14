@@ -9,24 +9,12 @@
  * @package Akina
  */
 ?>
+<?php get_template_part( 'template/cc' ); ?>
 <?php header('X-Frame-Options: SAMEORIGIN'); ?>
 <!DOCTYPE html>
-<!-- 
-Theme by Mashiro
-                      /^--^\     /^--^\     /^--^\
-                      \____/     \____/     \____/
-                     /      \   /      \   /      \
-                    |        | |        | |        |
-                     \__  __/   \__  __/   \__  __/
-|^|^|^|^|^|^|^|^|^|^|^|^\ \^|^|^|^/ /^|^|^|^|^\ \^|^|^|^|^|^|^|^|^|^|^|^|
-| | | | | | | | | | | | |\ \| | |/ /| | | | | | \ \ | | | | | | | | | | |
-########################/ /######\ \###########/ /#######################
-| | | | | | | | | | | | \/| | | | \/| | | | | |\/ | | | | | | | | | | | |
-|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
-
--->
 <html <?php language_attributes(); ?>>
 <head>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
@@ -85,8 +73,67 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 		$filter = akina_option('focus_img_filter');
 		?>
 		<div class="headertop <?php echo $filter; ?>">
+	 <script>
+	 var visible="visible";
+	 var left=0;
+	 var ope=false;
+	 window.onload=function(){
+	     document.getElementById('video-btn').onclick=function (){
+	     if(visible=="visible")
+	     {
+	         visible="hidden";
+	     }else{
+	         visible="visible";
+	     }
+	     try{
+     banner_wave_1.style="left: "+left+"px; visibility: "+visible+";";
+     }catch(Error){}
+     try{
+     banner_wave_2.style="left: "+(left+80)+"px; visibility: "+visible+";";
+     }catch(Error){}
+	     };   
+	 };
+     function mainFunc(){
+     try{
+     banner_wave_1.style="left: "+left+"px; visibility: "+visible+";";
+     }catch(Error){}
+     try{
+     banner_wave_2.style="left: "+(left+80)+"px; visibility: "+visible+";";
+     }catch(Error){}
+     if(left>=-800 && !ope)
+     {
+    left-=10;
+    }else{
+    ope=true;
+    left+=10;
+    if(left>=0)
+    {
+        ope=false;
+    }
+    }
+    }
+    this.setInterval(mainFunc,150);
+    
+</script>
+            <div id="banner_wave_1"></div>
+            <div id="banner_wave_2"></div>
 			<?php get_template_part('layouts/imgbox'); ?>
-		</div>	
+<script type="text/javascript">
+function headertop_down () {
+  var coverOffset = $('#content').offset().top
+  $('html,body').animate({
+    scrollTop: coverOffset
+  }, 600)
+}
+
+</script>
+<div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+		</div>
 		<?php } ?>
 		<div id="page" class="site wrapper">
 			<header class="site-header no-select" role="banner">
