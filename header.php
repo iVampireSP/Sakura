@@ -9,12 +9,10 @@
  * @package Akina
  */
 ?>
-<?php get_template_part( 'template/cc' ); ?>
 <?php header('X-Frame-Options: SAMEORIGIN'); ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
@@ -54,7 +52,8 @@ if (akina_option('akina_meta') == true) {
 <?php wp_head(); ?>
 <script type="text/javascript">
 if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
-  alert('朋友，IE浏览器未适配哦~');
+  alert('IE已经OUT啦，还不换Chrome?');
+window.location.replace("https://www.google.cn/intl/zh-CN/chrome/");
 }
 </script>
 <?php if(akina_option('google_analytics_id', '')):?>
@@ -102,10 +101,10 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
      }catch(Error){}
      if(left>=-800 && !ope)
      {
-    left-=10;
+    left-=3;
     }else{
     ope=true;
-    left+=10;
+    left+=3;
     if(left>=0)
     {
         ope=false;

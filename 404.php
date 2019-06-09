@@ -1,59 +1,32 @@
-<?php
-/**
- * The template for displaying 404 pages (not found).
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package Akina
- */
-
- ?>
-<html <?php language_attributes(); ?>>
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title itemprop="name"><?php global $page, $paged;wp_title( '-', true, 'right' );
-bloginfo( 'name' );$site_description = get_bloginfo( 'description', 'display' );
-if ( $site_description && ( is_home() || is_front_page() ) ) echo " - $site_description";if ( $paged >= 2 || $page >= 2 ) echo ' - ' . sprintf( __( '第 %s 页'), max( $paged, $page ) );?>
-</title>
-<link type="text/css" media="all" href="https://cdn.jsdelivr.net/gh/moezx/cdn@3.2.2/css/lib.css" rel="stylesheet" />
-<?php wp_head(); ?>
-<script>
-var the_url=window.location.href;
-var the_dom="<?php echo str_replace("http://", "", str_replace("https://", "", get_site_url())); ?>";
-var no_report = false;
-if (the_dom!= '2heng.xin') {
-    no_report = true;
-}
-var the_ua=navigator.userAgent;
-var the_ref=document.referrer;
-function httpGet(theUrl) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-var report_url = "https://api.mashiro.top/count/404/?" + "url="+the_url+"&ua="+the_ua+"&ref="+the_ref;
-if (!no_report) httpGet(report_url);
-</script>
-</head>
-<body <?php body_class(); ?>>
-<section class="error-404 not-found">
-<div class="error-img">
-<div class="anim-icon" id="404" style="height: 66%;"></div>
-</div>
-<div class="err-button back">
-<a id="golast" href=javascript:history.go(-1);>返回上一页</a>
-<a id="gohome" href="<?php bloginfo('url');?>">返回主页</a>  
-</div>
-<div style="display:block; width:284px;margin: auto;">
-<p style="margin-bottom: 1em;margin-top: 1.5em;text-align: center;font-size: 15px;">别急，试试站内搜索？</p>
-<p style="margin-bottom: 1em;text-align: center;font-size: 15px;">Don't worry, search in site?</p>
-<form class="s-search" method="get" action="/" role="search">
-    <i class="iconfont icon-search" style="bottom: 8px;left: 12px;"></i>
-    <input class="text-input" style="padding: 8px 20px 8px 46px;" type="search" name="s" placeholder="<?php _e('Search...', 'akina') ?>" required>	
-</form>
-</div>
-</section>
-<script src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.5/js/other/404.min.js" type="text/javascript"></script>
-</body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="journey.ad">
+        <meta name="copyright" content="journey.ad">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="Robots" content="NOINDEX, NOFOLLOW, NOARCHIVE">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="theme-color" content="#f33">
+	<meta http-equiv="Refresh" content="5;url=https://ivampiresp.com" />
+        <title>404 Not Found</title>
+        <style>
+            body{margin:0;padding:0;color:#444;margin:0;font:normal 14px/20px Helvetica,Arial,PingFang SC,Microsoft YaHei,WenQuanYi Micro Hei,tohoma,sans-serif;background-color:#f9f9f9;user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;cursor:default;position:absolute;width:100%;height:80%;top:20%;overflow:hidden;}.center{height:100%;}h1{margin:0;font-size:150px;line-height:150px;font-weight:normal;}h2{margin-top:20px;font-size:30px;}.footer{color:#f0f0f0;font-size:12px;padding:0px 20px 0px 20px;height:90px;width:calc(100% - 40px);margin-top:-90px;background-color:#474747;}.footer a{color:#f0f0f0;text-decoration:none;}.text{text-align:center;}#hitokoto{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <div class="text">
+                <h1>404</h1>
+                <h2>Not Found</h2>
+                <p><?php _e('欸？我的萝莉怎么不见了？！'); ?></p>
+                <p><?php _e('Forwarding...'); ?></p>
+            </div>
+        </div>
+        <div class="footer">
+            <br> © <script>document.write(new Date().getFullYear())</script> <a href="https://ivampiresp.com" target="_blank">iVampireSP.com</a>
+            <script src="https://api.fczbl.vip/hitokoto/?charset=utf-8&encode=js"></script>
+            <p id="hitokoto"><script>hitokoto()</script></p>
+        </div>
+    </body>
+</html>

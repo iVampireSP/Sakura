@@ -20,7 +20,7 @@
 	?>
 	</div><!-- #page Pjax container-->
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
+		<div class="site-info" theme-info="Sakura v<?php echo SAKURA_VERSION; ?>">
 			<div class="footertext">
 				<div class="img-preload">
 					<img src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/wordpress-rotating-ball-o.svg">
@@ -32,7 +32,7 @@
 			<p style="font-family: 'Ubuntu', sans-serif;">
 					<span style="color: #b9b9b9;">
 						<?php /* 能保留下面两个链接吗？算是我一个小小的心愿吧~ */ ?>
-						Theme <a href="https://ivampiresp.com/theme-sakurafull/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura-Full</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a> and <a href="https://ivampiresp.com/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">iVampireSP</a>
+						Theme <a href="https://ivampiresp.com/theme-sakurafull/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">SakuraFull</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://ivampiresp.com/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">iVampireSP</a>&<a href="https://2heng.xin/theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>
 					</span>
 				</p>
 			</div>
@@ -139,6 +139,19 @@
 </div>
 <style>.skin-menu{left:auto;right:10px;}.changeSkin-gear{left:auto;right:5px;}</style>
 <?php endif; ?>
-<script src="https://cdn.jsdelivr.net/gh/ivampiresp/live2d-widget/autoload.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
+<script type="text/javascript">//樱花
+ var system ={}; 
+ var p = navigator.platform; 
+ system.win = p.indexOf("Win") == 0; 
+ system.mac = p.indexOf("Mac") == 0; 
+ system.x11 = (p == "X11") || (p.indexOf("Linux") == 0); 
+ if(system.win||system.mac||system.xll){//如果是电脑
+ 
+ $.getScript("https://cdn.jsdelivr.net/gh/ivampiresp/special-JavaScript/yinghua.js");
+ }else{ //如果是手机
+ 
+ }
+ </script>
 </body>
 </html>

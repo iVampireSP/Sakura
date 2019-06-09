@@ -114,14 +114,14 @@ function optionsframework_options() {
 	
 	$options[] = array(
 		'name' => __('站点名称', 'options_framework_theme'),
-		'desc' => __('iVampireSPの物语', 'options_framework_theme'),
+		'desc' => __('樱花庄的白猫', 'options_framework_theme'),
 		'id' => 'site_name',
 		'std' => '',
 		'type' => 'text');	
 
 	$options[] = array(
 		'name' => __('作者', 'options_framework_theme'),
-		'desc' => __('iVampireSP', 'options_framework_theme'),
+		'desc' => __('Mashiro', 'options_framework_theme'),
 		'id' => 'author_name',
 		'std' => '',
 		'type' => 'text');	
@@ -129,7 +129,7 @@ function optionsframework_options() {
 	$options[] = array(
         'name' => __("主题风格", 'akina'),
         'id' => 'theme_skin',
-        'std' => "#FB7299",
+        'std' => "#FE9600",
         'desc' => __('自定义主题颜色', ''),
         'type' => "color"
 	);
@@ -229,7 +229,7 @@ function optionsframework_options() {
 		'name' => __('默认文章特色图', 'options_framework_theme'),
 		'desc' => __('在未设置文章特色图的情况下展示的默认图像，留空则调用本地随机封面（要展示的图片放入 /wp-content/themes/Sakura/feature/gallery/ 目录）', 'options_framework_theme'),
 		'id' => 'default_feature_image',
-		'std' => 'https://api.ivampiresp.com/tp/api.php',
+		'std' => 'https://api.mashiro.top/feature/',
 		'type' => 'text');
 		
 	$options[] = array(
@@ -687,11 +687,102 @@ function optionsframework_options() {
 		'std' => '',
 		'type' => 'text');	
 
-	//前台登录
+	//后台配置
 	$options[] = array(
-		'name' => __('前台登录', 'options_framework_theme'),
+		'name' => __('后台配置', 'options_framework_theme'),
 		'type' => 'heading' );
+        
+    //后台面板自定义配色方案
+    $options[] = array(
+    'name' => __('后台面板自定义配色方案', 'options_framework_theme'),
+    'desc' => __('你可以在下面自行设计后台面板（/wp-admin/）样式，不过在开始之前请到<a href="/wp-admin/profile.php">这里</a>将配色方案改为自定义（Custom）。<br><b>Tip: </b>如何搭配颜色？或许<a href="https://mashiro.top/color-thief/">这个</a>可以帮到你。', 'options_framework_theme'),
+    'id' => 'scheme_tip',
+    'std' => '',
+    'type' => 'typography ');
+    
+    $options[] = array(
+        'name' => __("面板主色调A", 'akina'),
+        'id' => 'dash_scheme_color_a',
+        'std' => "#c6742b",
+        'desc' => __('<i>(array) (optional)</i> An array of CSS color definitions which are used to give the user a feel for the theme.', ''),
+        'type' => "color"
+    );
+    
+    $options[] = array(
+        'name' => __("面板主色调B", 'akina'),
+        'id' => 'dash_scheme_color_b',
+        'std' => "#d88e4c",
+        'desc' => __('<i>(array) (optional)</i> An array of CSS color definitions which are used to give the user a feel for the theme.', ''),
+        'type' => "color"
+    );
+    
+    $options[] = array(
+        'name' => __("面板主色调C", 'akina'),
+        'id' => 'dash_scheme_color_c',
+        'std' => "#695644",
+        'desc' => __('<i>(array) (optional)</i> An array of CSS color definitions which are used to give the user a feel for the theme.', ''),
+        'type' => "color"
+    );
+    
+    $options[] = array(
+        'name' => __("面板主色调D", 'akina'),
+        'id' => 'dash_scheme_color_d',
+        'std' => "#a19780",
+        'desc' => __('<i>(array) (optional)</i> An array of CSS color definitions which are used to give the user a feel for the theme.', ''),
+        'type' => "color"
+    );
+    
+    $options[] = array(
+        'name' => __("面板图标配色——base", 'akina'),
+        'id' => 'dash_scheme_color_base',
+        'std' => "#e5f8ff",
+        'desc' => __('<i>(array) (optional)</i> An array of CSS color definitions used to color any SVG icons.', ''),
+        'type' => "color"
+    );
+    
+    $options[] = array(
+        'name' => __("面板图标配色——focus", 'akina'),
+        'id' => 'dash_scheme_color_focus',
+        'std' => "#fff",
+        'desc' => __('<i>(array) (optional)</i> An array of CSS color definitions used to color any SVG icons.', ''),
+        'type' => "color"
+    );
+    
+    $options[] = array(
+        'name' => __("面板图标配色——current", 'akina'),
+        'id' => 'dash_scheme_color_current',
+        'std' => "#fff",
+        'desc' => __('<i>(array) (optional)</i> An array of CSS color definitions used to color any SVG icons.', ''),
+        'type' => "color"
+    );
+		
+	$options[] = array(
+		'name' => __('其他自定义面板样式(CSS)', 'options_framework_theme'),
+		'desc' => __('如果还需要对面板其他样式进行调整可以把style放到这里', 'options_framework_theme'),
+		'id' => 'dash_scheme_css_rules',
+		'std' => '#adminmenu .wp-has-current-submenu .wp-submenu a,#adminmenu .wp-has-current-submenu.opensub .wp-submenu a,#adminmenu .wp-submenu a,#adminmenu a.wp-has-current-submenu:focus+.wp-submenu a,#wpadminbar .ab-submenu .ab-item,#wpadminbar .quicklinks .menupop ul li a,#wpadminbar .quicklinks .menupop.hover ul li a,#wpadminbar.nojs .quicklinks .menupop:hover ul li a,.folded #adminmenu .wp-has-current-submenu .wp-submenu a{color:#f3f2f1}body{background-image:url(https://view.moezx.cc/images/2019/04/21/windows10-2019-4-21-i3.jpg);background-size:cover;background-repeat:no-repeat;background-attachment:fixed;}#wpcontent{background:rgba(255,255,255,.8)}',
+		'type' => 'textarea');
 
+    $options[] = array(
+		'name' => __('后台登陆界面背景图', 'options_framework_theme'),
+		'desc' => __('该地址为空则使用默认图片', 'options_framework_theme'),
+		'id' => 'login_bg',
+		'type' => 'upload');
+        
+    $options[] = array(
+ 		'name' => __('后台登陆界面logo', 'options_framework_theme'),
+ 		'desc' => __('用于登录界面显示', 'options_framework_theme'),
+ 		'id' => 'logo_img',
+ 		'std' => $imagepath.'mashiro-logo-s.png',
+ 		'type' => 'upload');    
+    
+    $options[] = array(
+    'name' => __('登陆/注册相关设定', 'options_framework_theme'),
+    'desc' => __('', 'options_framework_theme'),
+    'id' => 'login_tip',
+    'std' => '',
+    'type' => 'typography ');
+    
 	$options[] = array(
 		'name' => __('指定登录地址', 'options_framework_theme'),
 		'desc' => __('强制不使用后台地址登陆，填写新建的登陆页面地址，比如 http://www.xxx.com/login【注意】填写前先测试下你新建的页面是可以正常打开的，以免造成无法进入后台等情况', 'options_framework_theme'),
@@ -834,6 +925,28 @@ function optionsframework_options() {
 		'type' => 'text');
         
     $options[] = array(
+		'name' => __('统计接口', 'akina'),
+		'id' => 'statistics_api',
+		'std' => "theme_build_in",
+		'type' => "radio",
+		'options' => array(
+			'wp_statistics' => __('WP-Statistics 插件（专业性统计，可排除无效访问）', ''),
+			'theme_build_in' => __('主题内建（简单的统计，计算每一次页面访问请求）', '')
+		));
+        
+    $options[] = array(
+		'name' => __('统计数据显示格式', 'akina'),
+		'id' => 'statistics_format',
+		'std' => "type_1",
+		'type' => "radio",
+		'options' => array(
+			'type_1' => __('23333 次访问（默认）', ''),
+			'type_2' => __('23,333 次访问（英式）', ''),
+			'type_3' => __('23 333 次访问（法式）', ''),
+			'type_4' => __('23k 次访问（中式）', ''),
+		));
+        
+    $options[] = array(
 		'name' => __('启用 baguetteBox', 'options_framework_theme'),
 		'desc' => __('默认禁用，<a href="https://github.com/mashirozx/Sakura/wiki/Fancybox">请阅读说明</a>', 'options_framework_theme'),
 		'id' => 'image_viewer',
@@ -875,6 +988,13 @@ function optionsframework_options() {
 		'std' => '0',
 		'type' => 'checkbox');
 
+	$options[] = array(
+		'name' => __('开启多说插件支持', 'options_framework_theme'),
+		'desc' => __('多说已经凉了', 'options_framework_theme'),
+		'id' => 'general_disqus_plugin_support',
+		'std' => '0',
+		'type' => 'checkbox');
+        
     $options[] = array(
 		'name' => __('时区调整', 'options_framework_theme'),
 		'desc' => __('如果评论出现时差问题在这里调整，填入一个整数，计算方法：实际时间=显示错误的时间-你输入的整数（单位：小时）', 'options_framework_theme'),
@@ -882,6 +1002,5 @@ function optionsframework_options() {
 		'std' => '0',
 		'type' => 'text');
         
- 
 	return $options;
 }
