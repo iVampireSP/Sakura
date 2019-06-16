@@ -85,7 +85,7 @@ function akina_setup() {
 	
 	// 优化代码
 	//去除头部冗余代码
-    remove_action('wp_head', 'feed_links_extra', 3);
+   remove_action('wp_head', 'feed_links_extra', 3);
     remove_action('wp_head', 'rsd_link');
     remove_action('wp_head', 'wlwmanifest_link');
     remove_action('wp_head', 'index_rel_link');
@@ -94,12 +94,12 @@ function akina_setup() {
 	remove_action( 'wp_head', 'wp_generator' ); //隐藏wordpress版本
     remove_filter('the_content', 'wptexturize'); //取消标点符号转义
     
-	remove_action('rest_api_init', 'wp_oembed_register_route');
-	remove_filter('rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10, 4);
-	remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
-	remove_filter('oembed_response_data', 'get_oembed_response_data_rich', 10, 4);
-	remove_action('wp_head', 'wp_oembed_add_discovery_links');
-	remove_action('wp_head', 'wp_oembed_add_host_js');
+	//remove_action('rest_api_init', 'wp_oembed_register_route');
+	//remove_filter('rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10, 4);
+	//remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
+	//remove_filter('oembed_response_data', 'get_oembed_response_data_rich', 10, 4);
+	//remove_action('wp_head', 'wp_oembed_add_discovery_links');
+	//remove_action('wp_head', 'wp_oembed_add_host_js');
 	remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
 	
 	function coolwp_remove_open_sans_from_wp_core() {
