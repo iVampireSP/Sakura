@@ -117,6 +117,11 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
             <div id="banner_wave_1"></div>
             <div id="banner_wave_2"></div>
 			<?php get_template_part('layouts/imgbox'); ?>
+<style>
+  #banner_wave_1,#banner_wave_2 {
+	z-index:9999999999;
+}
+</style>
 <script type="text/javascript">
 function headertop_down () {
   var coverOffset = $('#content').offset().top
