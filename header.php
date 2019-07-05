@@ -119,7 +119,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 			<?php get_template_part('layouts/imgbox'); ?>
 <style>
   #banner_wave_1,#banner_wave_2 {
-	z-index:9999;
+	z-index:54;
 }
 </style>
 <script type="text/javascript">
