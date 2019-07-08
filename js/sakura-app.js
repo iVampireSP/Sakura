@@ -1,7 +1,7 @@
 /*！
  * Sakura application bundle
- * @author Mashiro
- * @url https://2heng.xin
+ * @author iVampireSP&Mashiro
+ * @url https://ivampiresp.com
  * @date 2018.12.28
  */
 mashiro_global.variables = new function () {
@@ -1790,8 +1790,8 @@ $(function () {
     $(document).on("click", ".specsZan", function () {
         $(this).postLike();
     });
+    console.log("%c iVampireSP %c", "background:#24272A; color:#ffffff", "", "https://ivampiresp.com/");
     console.log("%c Mashiro %c", "background:#24272A; color:#ffffff", "", "https://2heng.xin/");
-    console.log("%c Github %c", "background:#24272A; color:#ffffff", "", "https://github.com/mashirozx");
 });
 var isWebkit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1,
     isOpera = navigator.userAgent.toLowerCase().indexOf('opera') > -1,
