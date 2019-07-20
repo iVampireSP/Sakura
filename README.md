@@ -18,7 +18,7 @@
 主题新加：<https://ivampiresp.com/theme-sakurafull/>
 原主题使用说明见：<https://2heng.xin/theme-sakura/>
 注意，请将以下代码添加到主题自定义CSS中！
-
+```CSS
 #banner_wave_1 {
     width:auto;
     height:65px;
@@ -69,7 +69,7 @@
     -webkit-transform:scale(1.5,1);
     transform:scale(1.5,1)
 }
-
+```
 原主题仓库国内镜像：<https://gitee.com/mashirozx/Sakura>
 
 希望你喜欢！
